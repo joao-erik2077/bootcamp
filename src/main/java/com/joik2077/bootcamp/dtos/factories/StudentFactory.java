@@ -4,6 +4,7 @@ import com.joik2077.bootcamp.dtos.requests.StudentCreateDTO;
 import com.joik2077.bootcamp.dtos.models.StudentDTO;
 import com.joik2077.bootcamp.models.Student;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;
@@ -11,8 +12,9 @@ import java.util.stream.Collectors;
 
 @Component
 @AllArgsConstructor
+@NoArgsConstructor
 public class StudentFactory {
-  private final CourseFactory courseFactory;
+  private CourseFactory courseFactory;
 
   public Student studentCreateDtoToStudent(StudentCreateDTO studentCreateDTO) {
     Student student = new Student();
