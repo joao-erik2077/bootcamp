@@ -5,7 +5,10 @@ import com.joik2077.bootcamp.repositories.CourseRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -17,7 +20,7 @@ public class CourseService {
     return course;
   }
 
-  public List<Course> getAllCourses() {
-    return repository.findAll();
+  public Set<Course> getAllCourses() {
+    return new HashSet<>(repository.findAll());
   }
 }
