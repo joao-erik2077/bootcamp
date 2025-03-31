@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -30,10 +31,10 @@ public class StudentController {
   }
 
   @GetMapping("/all")
-  public ResponseEntity<Set<StudentDTO>> getAllStudents() {
-    Set<Student> students = service.getAllStudents();
+  public ResponseEntity<List<StudentDTO>> getAllStudents() {
+    List<Student> students = service.getAllStudents();
 
-    Set<StudentDTO> response = factory.setOfStudentToSetOfStudentDto(students, true);
+    List<StudentDTO> response = factory.listOfStudentToListOfStudentDto(students, true);
 
     return new ResponseEntity<>(response, HttpStatus.CREATED);
   }

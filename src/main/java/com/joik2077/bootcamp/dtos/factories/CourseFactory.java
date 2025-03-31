@@ -5,8 +5,7 @@ import com.joik2077.bootcamp.dtos.models.CourseDTO;
 import com.joik2077.bootcamp.models.Course;
 import org.springframework.stereotype.Component;
 
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.List;
 
 @Component
 public class CourseFactory {
@@ -24,11 +23,11 @@ public class CourseFactory {
         course.getId(),
         course.getName(),
         course.getCreatedAt(),
-        studentFactory.setOfStudentToSetOfStudentDto(course.getStudents(), false)
+        studentFactory.listOfStudentToListOfStudentDto(course.getStudents(), false)
     );
   }
 
-  public Set<CourseDTO> setOfCourseToSetOfCourseDto(Set<Course> courses, boolean withStudents) {
+  public List<CourseDTO> listOfCourseToListOfCourseDto(List<Course> courses, boolean withStudents) {
     StudentFactory studentFactory = new StudentFactory();
 
     return courses.stream().map(
@@ -36,8 +35,8 @@ public class CourseFactory {
             course.getId(),
             course.getName(),
             course.getCreatedAt(),
-            withStudents ? studentFactory.setOfStudentToSetOfStudentDto(course.getStudents(), false) : null
+            withStudents ? studentFactory.listOfStudentToListOfStudentDto(course.getStudents(), false) : null
         )
-    ).collect(Collectors.toSet());
+    ).toList();
   }
 }

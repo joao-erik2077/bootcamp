@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.List;
 import java.util.UUID;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -13,6 +13,6 @@ public record CourseDTO(
     String name,
     LocalDateTime createdAt,
     @JsonIgnoreProperties("courses")
-    Set<StudentDTO> students
+    List<StudentDTO> students
 ) {
 }

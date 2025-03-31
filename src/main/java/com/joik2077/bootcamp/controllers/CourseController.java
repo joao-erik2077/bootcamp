@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -30,10 +31,10 @@ public class CourseController {
   }
 
   @GetMapping("/all")
-  public ResponseEntity<Set<CourseDTO>> getAllCourses() {
-    Set<Course> courses = service.getAllCourses();
+  public ResponseEntity<List<CourseDTO>> getAllCourses() {
+    List<Course> courses = service.getAllCourses();
 
-    Set<CourseDTO> response = factory.setOfCourseToSetOfCourseDto(courses, true);
+    List<CourseDTO> response = factory.listOfCourseToListOfCourseDto(courses, true);
 
     return new ResponseEntity<>(response, HttpStatus.CREATED);
   }

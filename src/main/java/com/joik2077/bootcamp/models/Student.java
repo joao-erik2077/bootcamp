@@ -7,9 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Setter
@@ -25,7 +23,7 @@ public class Student {
   private String name;
 
   @ManyToMany(mappedBy = "students")
-  private Set<Course> courses = new HashSet<>();
+  private List<Course> courses = new ArrayList<>();
 
   private LocalDateTime createdAt = LocalDateTime.now();
 }

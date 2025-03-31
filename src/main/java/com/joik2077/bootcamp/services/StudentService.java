@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -20,7 +19,7 @@ public class StudentService {
     return student;
   }
 
-  public Set<Student> getAllStudents() {
-    return new HashSet<>(repository.findAll());
+  public List<Student> getAllStudents() {
+    return repository.findAllByOrderByCreatedAt();
   }
 }

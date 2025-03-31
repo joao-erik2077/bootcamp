@@ -7,9 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Getter
@@ -30,7 +28,7 @@ public class Course {
       joinColumns = @JoinColumn(name = "courseId"),
       inverseJoinColumns = @JoinColumn(name = "studentId")
   )
-  private Set<Student> students = new HashSet<>();
+  private List<Student> students = new ArrayList<>();
 
   private LocalDateTime createdAt = LocalDateTime.now();
 }
