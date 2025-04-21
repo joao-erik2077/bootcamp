@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/courses")
@@ -37,5 +38,14 @@ public class CourseController {
     List<CourseDTO> response = factory.listOfCourseToListOfCourseDto(courses, true);
 
     return new ResponseEntity<>(response, HttpStatus.CREATED);
+  }
+
+  @PostMapping("/{courseId}/students/{studentId}")
+  public ResponseEntity<CourseDTO> addStudentToCourse(@PathVariable UUID courseId, @PathVariable UUID studentId) {
+    Course course = service.addStudentToCourse(courseId, studentId);
+
+    CourseDTO response = factory.courseToCourseDto(course);
+
+    return new ResponseEntity<>(response, HttpStatus.OK);
   }
 }
